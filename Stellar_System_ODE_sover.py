@@ -31,13 +31,13 @@ def equations(z0,t, planets):
     thisx = 0
     thisy = 0
     for i in range(0,4*len(planets)):
-        if i in np.arange(0,1000,4):                                    # If i is x
+        if i in np.arange(0,len(planets) * 4,4):                                    # If i is x
             f.append(z0[i+2])
             thisx = z0[i]
-        elif i in np.arange(1,1000, 4):                                 # If i is y
+        elif i in np.arange(1,len(planets) * 4, 4):                                 # If i is y
             f.append(z0[i+2])
             thisy = z0[i]
-        elif i in np.arange(2,1000,4):                                  # If i is vx
+        elif i in np.arange(2,len(planets) * 4,4):                                  # If i is vx
             dvxdt = 0
             for k in range(len(planets)):
                 if planid != k:                                         # Calculating force for each other planet
@@ -50,7 +50,7 @@ def equations(z0,t, planets):
                     dvxdt += acc
             f.append(dvxdt)
 
-        elif i in np.arange(3,1000,4):                                  # If i is vy
+        elif i in np.arange(3,len(planets) * 4,4):                                  # If i is vy
             dvydt = 0
             for k in range(len(planets)):                               # Calculating for on each other planet
                 if planid != k:
